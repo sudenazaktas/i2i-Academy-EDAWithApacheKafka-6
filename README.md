@@ -21,3 +21,18 @@ In this project, the producer sends sample order messages to a Kafka topic, and 
 - Start Kafka with Docker Compose.
 - Run the consumer.
 - Run the producer.
+
+## Note on Running Producer vs Consumer
+
+This project uses a single `mainClass` setting in `pom.xml` to decide which 
+application runs with `mvn exec:java`. By default, it's set to run the Producer.
+
+To switch between them, open `pom.xml` and change the `<mainClass>` value inside 
+the `exec-maven-plugin` configuration:
+
+- For the Consumer: `com.i2iacademy.kafka.OrderConsumer`
+- For the Producer: `com.i2iacademy.kafka.OrderProducer`
+
+To see the full flow, run the Consumer first (in one terminal), then run the 
+Producer (in a second terminal) — the Consumer will print the messages as they 
+arrive.
